@@ -1,4 +1,4 @@
-# Project 2 - *Parse Instagram*
+# Project 3 - *Parse Instagram*
 
 **Parse Instagram** is an android app that allows users to utilize an Instagram-like application to post pictures with captions using a Parse backend.
 
