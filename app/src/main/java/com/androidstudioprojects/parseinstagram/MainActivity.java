@@ -35,38 +35,54 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSumbit;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        etDescription = findViewById(R.id.etDescription);
-        btnCaptureImage = findViewById(R.id.btnCaptureImage);
-        ivPostImage = findViewById(R.id.ivPostImage);
-        btnSumbit = findViewById(R.id.btnSubmit);
-        
-        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchCamera();
-            }
-        });
+            etDescription = findViewById(R.id.etDescription);
+            btnCaptureImage = findViewById(R.id.btnCaptureImage);
+            ivPostImage = findViewById(R.id.ivPostImage);
+            btnSumbit = findViewById(R.id.btnSubmit);
+            btnLogout = findViewById(R.id.btnLogout);
 
-        //queryPosts();
-        btnSumbit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String description = etDescription.getText().toString();
-                ParseUser user = ParseUser.getCurrentUser();
-                if(photoFile == null || ivPostImage.getDrawable() == null){
-                    Log.e(TAG, "No photo to submit");
-                    Toast.makeText(MainActivity.this, "There is no photo!", Toast.LENGTH_SHORT).show();
-                    return;
+            btnCaptureImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchCamera();
                 }
-                savePost(description, user, photoFile);
-            }
-        });
+            });
+
+            btnSumbit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String description = etDescription.getText().toString();
+                    ParseUser user = ParseUser.getCurrentUser();
+                    if (photoFile == null || ivPostImage.getDrawable() == null) {
+                        Log.e(TAG, "No photo to submit");
+                        Toast.makeText(MainActivity.this, "There is no photo!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    savePost(description, user, photoFile);
+                }
+            });
+
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ParseUser.logOut();
+                    ParseUser currentUser = ParseUser.getCurrentUser();
+                    goLoginActivity();
+                }
+            });
+        }
+        else{
+            goLoginActivity();
+        }
     }
 
     private void launchCamera() {
@@ -122,5 +138,12 @@ public class MainActivity extends AppCompatActivity {
                 ivPostImage.setImageResource(0);
             }
         });
+    }
+
+    private void goLoginActivity() {
+        Log.d(TAG, "navigating to login activity");
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 }
