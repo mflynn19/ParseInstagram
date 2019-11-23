@@ -4,7 +4,7 @@
 
 Submitted by: **M. Flynn**
 
-Time spent: **9** hours spent in total
+Time spent: **19** hours spent in total
 
 ## User Stories
 
@@ -14,12 +14,18 @@ The following **required** functionality is completed:
 * [x] User can **log in and log out of his or her account**
 * [x] The current signed in user is **persisted across app restarts**
 * [x] User can **take a photo, add a caption, and post it to "Instagram"** 
+* [x] User can **view the last 20 posts submitted to "Instagram"** 
+* [x] User can **switch between different tabs using fragments and a Bottom Navigation View** 
+* [] User can **pull to refresh the last 20 posts submitted to "Instagram"** 
+
+
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='walkthrough7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
