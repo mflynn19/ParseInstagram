@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 * [x] User can **take a photo, add a caption, and post it to "Instagram"** 
 * [x] User can **view the last 20 posts submitted to "Instagram"** 
 * [x] User can **switch between different tabs using fragments and a Bottom Navigation View** 
-* [] User can **pull to refresh the last 20 posts submitted to "Instagram"** 
+* [x] User can **pull to refresh the last 20 posts submitted to "Instagram"** 
 
 
 
